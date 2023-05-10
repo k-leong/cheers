@@ -15,14 +15,17 @@ const Home = () => {
   function drinkHandler() {
     navigate('/drink')
   }
+  function mealHandler() {
+    navigate('/meal')
+  }
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
         <Toolbar />
         <Typography align='center' variant='h2'>Welcome</Typography>
         <Grid container direction='row' justifyContent='center' alignItems='center'>
-          <Button variant="outlined">
-              <Item>Meal</Item>
+          <Button variant="outlined" onClick={mealHandler}>
+            <Item>Meal</Item>
           </Button>
           <Button variant="outlined" onClick={drinkHandler}>
             <Item>Drink</Item>

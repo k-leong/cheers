@@ -1,4 +1,4 @@
-import { Button, ImageList, ImageListItem, ImageListItemBar, Toolbar } from '@mui/material'
+import { ButtonBase, ImageList, ImageListItem, ImageListItemBar, Toolbar } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -39,14 +39,14 @@ const RandomDrink = () => {
   return (
     <>
       <Toolbar />
-      <ImageList cols={3}>
+      <ImageList cols={3} sx={{ width: '50%', height: '100%', margin: 'auto' }}>
         {drinks.map(({ idDrink, strDrink, strDrinkThumb }) => {
           return (
             <ImageListItem key={idDrink}>
-              <img src={strDrinkThumb} loading='lazy' height='auto' width='100%' />
-              <Button onClick={() => drinkHandler(idDrink)} size='small' fullWidth>
+              <img alt={strDrink} src={strDrinkThumb} loading='lazy' height='auto' width='100%' />
+              <ButtonBase onClick={() => drinkHandler(idDrink)} size='small' fullWidth>
                 <ImageListItemBar title={strDrink} />
-              </Button>
+              </ButtonBase>
             </ImageListItem>
           )
         })}

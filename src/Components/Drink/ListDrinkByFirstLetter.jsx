@@ -1,17 +1,16 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-
-const alpha = Array.from(Array(26)).map((e, i) => i + 65)
-const alphabet = alpha.map((x) => String.fromCharCode(x))
+import { useParams } from 'react-router-dom'
 
 const ListDrinkByFirstLetter = () => {
   const [drinks, setDrinks] = useState([])
   const [loading, setLoading] = useState(true)
+  const { letter } = useParams()
   useEffect(() => {
     fetchDrinks()
   }, [])
   const fetchDrinks = async () => {
-    await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
+    await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`)
       .then((response) => {
         setDrinks(response.data.drinks)
       }).catch((error) => {
@@ -22,10 +21,10 @@ const ListDrinkByFirstLetter = () => {
 
   return (
     <>
-      {drinks.map(({ idDrink, strDrink, strDrinkThumb}) => (
+      {drinks.map(({ idDrink, strDrink, strDrinkThumb }) => (
         <>
-        <p key={idDrink}>{strDrink}</p>
-        <img src={strDrinkThumb}/>
+          <p key={idDrink}>{strDrink}</p>
+          <img src={strDrinkThumb} />
         </>
       ))}
     </>

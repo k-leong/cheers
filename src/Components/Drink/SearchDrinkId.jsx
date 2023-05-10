@@ -46,8 +46,8 @@ const SearchDrinkId = () => {
   return (
     <>
       <Toolbar />
-      <Box alignItems='center' display='flex' justifyContent='center'>
-        <img src={drink.strDrinkThumb} />
+      <Box alignItems='center' display='flex' justifyContent='center' alignContent='center'>
+        <img src={drink.strDrinkThumb} loading='lazy' alt={drink.strDrink} />
       </Box>
       <Typography variant='h2' align='center'>{drink.strDrink}</Typography>
       <Typography align='center'>{ingredients}</Typography>

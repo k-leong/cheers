@@ -30,11 +30,10 @@ const RandomDrink = () => {
         tempDrink.push(response.data.drinks[0])
       })
       setDrinks(tempDrink)
-      setLoading(false)
     })).catch((error) => {
       console.log(error)
     })
-
+    setLoading(false)
   }
   return (
     <>
@@ -44,7 +43,7 @@ const RandomDrink = () => {
           return (
             <ImageListItem key={idDrink}>
               <img alt={strDrink} src={strDrinkThumb} loading='lazy' height='auto' width='100%' />
-              <ButtonBase onClick={() => drinkHandler(idDrink)} size='small' fullWidth>
+              <ButtonBase onClick={() => drinkHandler(idDrink)} size='small' >
                 <ImageListItemBar title={strDrink} />
               </ButtonBase>
             </ImageListItem>

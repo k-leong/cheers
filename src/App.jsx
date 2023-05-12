@@ -21,7 +21,7 @@ function App() {
         <Route path='/drink'>
           <Route index element={<RandomDrink />} />
           <Route path='id/:id' element={<SearchDrinkId />} />
-          <Route path='letter/:letter' element={<ListLetter />} />
+          <Route path='letter/:letter' element={<ListDrinkByFirstLetter />} />
         </Route>
         <Route path='/meal'>
           <Route index element={<ListCategories />} />
@@ -30,6 +30,7 @@ function App() {
         </Route>
         <Route path='/random' element={<GetRandom />} />
       </Routes>
+      <ListLetter/>
       <BottomNavigation showLabels>
         <BottomNavigationAction label="Recents" />
       </BottomNavigation>

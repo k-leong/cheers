@@ -14,7 +14,7 @@ const ListLetter = () => {
         {alphabet.map((letter, index) => {
           return (
             <React.Fragment key={index}>
-              <Link to={`/drink/letter/${letter}`}>
+              <Link to={`/drink/letter/${letter}`} reloadDocument>
                 {letter}
               </Link>
               {letter != 'Z' && <> / </>}

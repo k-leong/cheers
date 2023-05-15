@@ -1,5 +1,6 @@
+import { Toolbar, Typography } from '@mui/material'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const ListDrinkByFirstLetter = () => {
@@ -19,14 +20,16 @@ const ListDrinkByFirstLetter = () => {
     setLoading(false)
   }
 
+  const error = drinks ? <></> : <Typography>No drinks found</Typography>
+
   return (
     <>
-      {drinks.map(({ idDrink, strDrink, strDrinkThumb }) => (
-        <>
-          <p key={idDrink}>{strDrink}</p>
+      {drinks ? drinks.map(({ idDrink, strDrink, strDrinkThumb }) => (
+        <React.Fragment key={idDrink}>
+          <p >{strDrink}</p>
           <img src={strDrinkThumb} />
-        </>
-      ))}
+        </React.Fragment>)) : error
+      }
     </>
   )
 }

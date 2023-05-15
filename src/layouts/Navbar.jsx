@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 const Navbar = () => {
   return (
-    <AppBar>
+    <AppBar >
       <Toolbar sx={{ justifyContent: 'end' }}>
         <Button variant="outlined" color="error" sx={{ textTransform: 'capitalize' }}>
           <Link to='/'>Home</Link>

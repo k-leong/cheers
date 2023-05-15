@@ -1,7 +1,8 @@
-import { Box, Toolbar, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import TabInfo from '../../layouts/TabInfo'
 
 const SearchDrinkId = () => {
   const [drink, setDrink] = useState([])
@@ -45,13 +46,11 @@ const SearchDrinkId = () => {
   }
   return (
     <>
-      <Toolbar />
       <Box alignItems='center' display='flex' justifyContent='center' alignContent='center'>
         <img src={drink.strDrinkThumb} loading='lazy' alt={drink.strDrink} />
       </Box>
       <Typography variant='h2' align='center'>{drink.strDrink}</Typography>
-      <Typography align='center'>{ingredients}</Typography>
-      <Typography align='center'>{instructions}</Typography>
+      <TabInfo ingredients={ingredients} instructions={instructions}/>
     </>
   )
 }

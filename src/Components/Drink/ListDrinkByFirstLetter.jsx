@@ -1,12 +1,17 @@
-import { Typography } from '@mui/material'
+import { ButtonBase, ImageList, ImageListItem, ImageListItemBar, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const ListDrinkByFirstLetter = () => {
   const [drinks, setDrinks] = useState([])
   const [loading, setLoading] = useState(true)
   const { letter } = useParams()
+  const navigate = useNavigate()
+
+  function drinkHandler(id) {
+    navigate(`/drink/id/${id}`)
+  }
   useEffect(() => {
     fetchDrinks()
   }, [])
@@ -23,14 +28,18 @@ const ListDrinkByFirstLetter = () => {
   const error = drinks ? <></> : <Typography>No drinks found</Typography>
 
   return (
-    <>
-      {drinks ? drinks.map(({ idDrink, strDrink, strDrinkThumb }) => (
-        <React.Fragment key={idDrink}>
-          <p >{strDrink}</p>
-          <img src={strDrinkThumb} />
-        </React.Fragment>)) : error
-      }
-    </>
+    <ImageList cols={3} sx={{ width: '50%', height: '100%', margin: 'auto' }}>
+      {drinks.map(({ idDrink, strDrink, strDrinkThumb }) => {
+        return (
+          <ImageListItem key={idDrink}>
+            <img alt={strDrink} src={strDrinkThumb} loading='lazy' height='auto' width='100%' />
+            <ButtonBase onClick={() => drinkHandler(idDrink)} size='small' >
+              <ImageListItemBar title={strDrink} />
+            </ButtonBase>
+          </ImageListItem>
+        )
+      })}
+    </ImageList>
   )
 }
 

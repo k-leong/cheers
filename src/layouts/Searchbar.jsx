@@ -1,19 +1,27 @@
 import { Grid, TextField, Select, MenuItem, FormControl, InputLabel, Button } from '@mui/material'
-import { useState } from 'react';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Searchbar = () => {
   const [search, setSearch] = useState('')
   const [name, setName] = useState('')
+  const navigate = useNavigate()
+
   const selectChange = (event) => {
-    setSearch(event.target.value);
+    setSearch(event.target.value)
   }
   const textChange = (event) => {
     setName(event.target.value)
   }
   const buttonHandler = () => {
-    console.log('search ', search)
-    console.log('name ', name)
+    if (search == 'Ingredient'){
+      navigate(`/drink/ingredient/${name}`)
+    }
+    else if (search == 'Cocktail Name'){
+      navigate(`/drink/name/${name}`)
+    }
   }
+
   return (
     <Grid container direction='row' justifyContent='center' alignItems='center'>
       <FormControl sx={{ display: 'flex', width: '100%', maxWidth: '50%' }}>

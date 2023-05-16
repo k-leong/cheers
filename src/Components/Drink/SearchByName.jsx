@@ -3,23 +3,20 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const SearchByIngredient = () => {
+const SearchByName = (props) => {
   const [drink, setDrink] = useState([])
   const [loading, setLoading] = useState(true)
-  const {ingredient} = useParams()
+  const { name } = useParams()
   const navigate = useNavigate()
-
+  
   function drinkHandler(id) {
     navigate(`/drink/id/${id}`)
   }
   useEffect(() => {
-    if (!/[a-xA-Z]/.test(ingredient)) {
-      navigate(-1)
-    }
     fetchCategory()
   }, [])
   const fetchCategory = async () => {
-    await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+    await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
       .then((response) => {
         setDrink(response.data.drinks)
       }).catch((error) => {
@@ -27,7 +24,7 @@ const SearchByIngredient = () => {
       })
     setLoading(false)
   }
-  console.log(drink)
+
   return (
     <ImageList cols={3} sx={{ width: '50%', height: '100%', margin: 'auto' }}>
       {drink.map(({ idDrink, strDrink, strDrinkThumb }) => {
@@ -44,4 +41,4 @@ const SearchByIngredient = () => {
   )
 }
 
-export default SearchByIngredient
+export default SearchByName

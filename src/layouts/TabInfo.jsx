@@ -9,7 +9,7 @@ const TabPanel = (props) => {
     <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
       {value === index && (
         <Box sx={{ p: 3, marginRight: '25%', marginLeft: '25%', border: '1px dashed grey', height: 300 }}>
-          <Typography align='center'>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -34,6 +34,7 @@ const TabInfo = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
+  
   return (
     <>
       <Tabs value={value} onChange={handleChange} centered>

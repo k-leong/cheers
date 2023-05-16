@@ -7,6 +7,7 @@ const RandomDrink = () => {
   const navigate = useNavigate()
   const [drinks, setDrinks] = useState([])
   const [loading, setLoading] = useState(true)
+  
   function drinkHandler(id) {
     navigate(`/drink/id/${id}`)
   }

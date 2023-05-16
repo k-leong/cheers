@@ -1,9 +1,9 @@
-import { BottomNavigation, BottomNavigationAction } from "@mui/material"
+import { BottomNavigation, BottomNavigationAction } from '@mui/material'
 
 const Footer = () => {
   return (
     <BottomNavigation showLabels>
-      <BottomNavigationAction label="Recents" />
+      <BottomNavigationAction label='Recents' />
     </BottomNavigation>
   )
 }

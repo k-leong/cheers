@@ -1,16 +1,12 @@
-import { ButtonBase, ImageList, ImageListItem, ImageListItemBar, Toolbar } from '@mui/material'
+import { Toolbar } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import ImagePanel from '../../layouts/ImagePanel'
 
 const RandomDrink = () => {
-  const navigate = useNavigate()
   const [drinks, setDrinks] = useState([])
   const [loading, setLoading] = useState(true)
-  
-  function drinkHandler(id) {
-    navigate(`/drink/id/${id}`)
-  }
+
   useEffect(() => {
     fetchRandomDrink()
   }, [])
@@ -39,18 +35,7 @@ const RandomDrink = () => {
   return (
     <>
       <Toolbar />
-      <ImageList cols={3} sx={{ width: '50%', height: '100%', margin: 'auto' }}>
-        {drinks.map(({ idDrink, strDrink, strDrinkThumb }) => {
-          return (
-            <ImageListItem key={idDrink}>
-              <img alt={strDrink} src={strDrinkThumb} loading='lazy' height='auto' width='100%' />
-              <ButtonBase onClick={() => drinkHandler(idDrink)} size='small' >
-                <ImageListItemBar title={strDrink} />
-              </ButtonBase>
-            </ImageListItem>
-          )
-        })}
-      </ImageList>
+      <ImagePanel drinks={drinks} />
     </>
   )
 }

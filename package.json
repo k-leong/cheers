@@ -1,4 +1,5 @@
 {
+  "homepage": "https://kleong0221.github.io/cheers",
   "name": "recipes",
   "version": "0.1.0",
   "private": true,
@@ -14,9 +15,12 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^2.0.1",
+    "gh-pages": "^5.0.0",
     "vite": "^3.0.7"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "vite",
     "build": "vite build"
   },

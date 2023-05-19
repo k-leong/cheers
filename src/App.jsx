@@ -4,12 +4,13 @@ import RandomDrink from './Components/Drink/RandomDrink'
 import SearchDrinkId from './Components/Drink/SearchDrinkId'
 import SearchByIngredient from './Components/Drink/SearchByIngredient'
 import ListLetter from './Components/Home/ListLetter'
-import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home/Home'
 import Navbar from './layouts/Navbar'
 import { Toolbar } from '@mui/material'
 import Footer from './layouts/Footer'
 import SearchByName from './Components/Drink/SearchByName'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import NotFound from './Components/NotFound'
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
           <Route path='ingredient/:ingredient' element={<SearchByIngredient />} />
         </Route>
         <Route path='/random' element={<GetRandom />} />
+        <Route path='/notfound' element={<NotFound />} />
+        <Route path='*' element={<Navigate replace to='/notfound' />} />
       </Routes>
       <ListLetter />
       <Footer />

@@ -1,4 +1,4 @@
-import { Box, List, Tab, Tabs, Typography } from '@mui/material'
+import { Box, List, Tab, Tabs } from '@mui/material'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 

@@ -1,50 +1,13 @@
 import { BottomNavigation, BottomNavigationAction } from '@mui/material'
+import { GitHub, LinkedIn } from '@mui/icons-material'
 
 const Footer = () => {
   return (
     <BottomNavigation showLabels>
-      <BottomNavigationAction label='Recents' />
+      <BottomNavigationAction label='LinkedIn' icon={<LinkedIn />} onClick={() => window.open('https://linkedin.com/in/kennyleong21')} />
+      <BottomNavigationAction label='GitHub' icon={<GitHub />} onClick={() => window.open('https://github.com/k-leong')} />
     </BottomNavigation>
   )
 }
-
-// import { createTheme, styled } from '@mui/material/styles'
-// import { AppBar, Toolbar, Typography, IconButton, Grid } from '@mui/material';
-// import ListLetter from '../Components/Home/ListLetter';
-
-// const useStyles = styled((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//     position: 'relative',
-//     marginTop: 'auto',
-//   },
-//   appBar: {
-//     top: 'auto',
-//     bottom: 0,
-//   },
-//   grow: {
-//     flexGrow: 1,
-//   },
-//   footerContent: {
-//     [theme.breakpoints.up('md')]: {
-//       textAlign: 'right',
-//     },
-//     [theme.breakpoints.down('sm')]: {
-//       textAlign: 'center',
-//     },
-//   },
-// }));
-
-// function Footer() {
-//   const classes = useStyles();
-
-//   return (
-//     <AppBar position="static" className={classes.appBar}>
-//       <Typography variant="body1" className={classes.grow} align='center'>
-//         <ListLetter />
-//       </Typography>
-//     </AppBar>
-//   );
-// }
 
 export default Footer

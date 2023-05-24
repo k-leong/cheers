@@ -1,17 +1,15 @@
-import { Toolbar } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import ImagePanel from '../../layouts/ImagePanel'
 
-const RandomDrink = () => {
+const useFetchRandomDrinks = () => {
   const [drinks, setDrinks] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchRandomDrink()
+    fetchRandomDrinks()
   }, [])
 
-  const fetchRandomDrink = async () => {
+  const fetchRandomDrinks = async () => {
     await axios.all([
       axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php'),
       axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php'),
@@ -32,12 +30,7 @@ const RandomDrink = () => {
     })
     setLoading(false)
   }
-  return (
-    <>
-      <Toolbar />
-      <ImagePanel drinks={drinks} />
-    </>
-  )
+  return { drinks }
 }
 
-export default RandomDrink
+export default useFetchRandomDrinks

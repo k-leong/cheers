@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import Searchbar from '../../layouts/Searchbar'
-import RandomDrink from '../Drink/RandomDrink'
+import RandomDrink from '../drink/RandomDrink'
 
 const Home = () => {
   return (

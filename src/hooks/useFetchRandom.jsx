@@ -1,19 +1,16 @@
-import { Box, Typography } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import TabInfo from '../layouts/TabInfo'
 
-const GetRandom = () => {
-  // const [meal, setMeal] = useState([])
+const useFetchRandom = () => {
   const [drink, setDrink] = useState([])
   const [loading, setLoading] = useState(true)
   const [ingredients, setIngredients] = useState([])
   const [instructions, setInstructions] = useState('')
 
   useEffect(() => {
-    fetchRandomDrink()
+    fetchRandom()
   }, [])
-  const fetchRandomDrink = async () => {
+  const fetchRandom = async () => {
     await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
       .then((response) => {
         setDrink(response.data.drinks[0])
@@ -37,15 +34,7 @@ const GetRandom = () => {
       })
     setLoading(false)
   }
-  return (
-    <>
-      <Box alignItems='center' display='flex' justifyContent='center' alignContent='center'>
-        <img src={drink.strDrinkThumb} loading='lazy' alt={drink.strDrink} />
-      </Box>
-      <Typography variant='h2' align='center'>{drink.strDrink}</Typography>
-      <TabInfo ingredients={ingredients} instructions={instructions}/>
-    </>
-  )
+  return { drink, instructions, ingredients }
 }
 
-export default GetRandom
+export default useFetchRandom

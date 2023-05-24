@@ -1,21 +1,17 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import ImagePanel from '../../layouts/ImagePanel'
 
-const SearchByIngredient = () => {
+const useFetchIngredient = (ingredient, navigate) => {
   const [drink, setDrink] = useState([])
   const [loading, setLoading] = useState(true)
-  const {ingredient} = useParams()
-  const navigate = useNavigate()
 
   useEffect(() => {
     if (!/[a-xA-Z]/.test(ingredient)) {
       navigate(-1)
     }
-    fetchCategory()
-  }, [])
-  const fetchCategory = async () => {
+    fetchIngredient()
+  }, [ingredient])
+  const fetchIngredient = async () => {
     await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
       .then((response) => {
         setDrink(response.data.drinks)
@@ -24,14 +20,7 @@ const SearchByIngredient = () => {
       })
     setLoading(false)
   }
-  
-  return (
-    <>
-    {
-      drink ? <ImagePanel drinks={drink} /> : <Typography>No drinks found</Typography>
-    }
-  </>
-  )
+  return { drink }
 }
 
-export default SearchByIngredient
+export default useFetchIngredient

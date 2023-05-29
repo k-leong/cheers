@@ -5,11 +5,11 @@ const Navbar = () => {
   return (
     <AppBar >
       <Toolbar sx={{ justifyContent: 'end' }}>
-        <Button variant='outlined' color='error' sx={{ textTransform: 'capitalize' }}>
-          <Link to='/'>Home</Link>
+        <Button variant='contained' color='inherit' sx={{ textTransform: 'capitalize' }}>
+          <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
         </Button>
-        <Button variant='outlined' color='error' sx={{ textTransform: 'capitalize' }}>
-          <Link to='/random'>Random</Link>
+        <Button variant='contained' color='inherit' sx={{ textTransform: 'capitalize' }}>
+          <Link to='/random' style={{ textDecoration: 'none' }}>Random</Link>
         </Button>
       </Toolbar>
     </AppBar>

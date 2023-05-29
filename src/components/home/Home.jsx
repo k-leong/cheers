@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <Typography align='center' variant='h2'>Welcome to the Chill Bar</Typography>
+        <Typography align='center' variant='h2'>Welcome to the Cheers Bar</Typography>
         <Searchbar />
         <RandomDrink />
       </Box>

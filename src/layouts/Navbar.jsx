@@ -9,7 +9,7 @@ const Navbar = () => {
           <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
         </Button>
         <Button variant='contained' color='inherit' sx={{ textTransform: 'capitalize' }}>
-          <Link to='/random' style={{ textDecoration: 'none' }}>Random</Link>
+          <Link to='/random' style={{ textDecoration: 'none' }} reloadDocument>Random</Link>
         </Button>
       </Toolbar>
     </AppBar>

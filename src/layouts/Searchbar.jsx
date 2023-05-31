@@ -14,16 +14,18 @@ const Searchbar = () => {
     setName(event.target.value)
   }
   const buttonHandler = () => {
-    if (search == 'Ingredient'){
+    if (search == 'Ingredient') {
       navigate(`/drink/ingredient/${name}`)
     }
-    else if (search == 'Cocktail Name'){
+    else if (search == 'Cocktail Name') {
       navigate(`/drink/name/${name}`)
     }
   }
 
+  const searchButton = (name && search) ? (<Button variant='contained' onClick={buttonHandler} >Search</Button>) : (<Button variant='contained' onClick={buttonHandler} disabled>Search</Button>)
+
   return (
-    <Grid container direction='row' justifyContent='center' alignItems='center'>
+    <Grid container direction='row' justifyContent='center' alignItems='stretch'>
       <FormControl sx={{ display: 'flex', width: '100%', maxWidth: '50%' }}>
         <TextField type='search' label='Search cocktail name or ingredient' onChange={textChange} />
       </FormControl>
@@ -34,7 +36,7 @@ const Searchbar = () => {
           <MenuItem value='Ingredient'>Ingredient</MenuItem>
         </Select>
       </FormControl>
-      <Button onClick={buttonHandler}>Search</Button>
+      {searchButton}
     </Grid>
   )
 }
